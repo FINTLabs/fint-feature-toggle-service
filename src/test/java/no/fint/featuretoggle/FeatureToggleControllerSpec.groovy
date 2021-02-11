@@ -2,7 +2,7 @@ package no.fint.featuretoggle
 
 import spock.lang.Specification
 
-class FeatureToggleControllerSpeck extends Specification {
+class FeatureToggleControllerSpec extends Specification {
 
     def "Strip application name should return feature without application name"() {
         given:
