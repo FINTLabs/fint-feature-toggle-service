@@ -15,7 +15,7 @@ public class FintUnleashConfig {
     @Value("${fint.unleash.api:https://unleashed-beta.fintlabs.no/api/}")
     private String unleashApi;
 
-    @Value("${fint.unleash.instance-id}")
+    @Value("${fint.unleash.instance-id:backend}")
     private String instanceId;
 
     @Bean
