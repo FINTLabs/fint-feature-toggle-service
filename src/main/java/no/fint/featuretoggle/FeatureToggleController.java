@@ -30,11 +30,10 @@ public class FeatureToggleController {
                 .getFeatureToggleNames()
                 .stream()
                 .filter(feature -> feature.startsWith(applicationName))
-                .collect(Collectors.toMap(this::stripApplicationName, unleashClient::isEnabled)));
-
+                .collect(Collectors.toMap(feature -> stripApplicationName(applicationName, feature), unleashClient::isEnabled)));
     }
 
-    private String stripApplicationName(String applicationName) {
-        return applicationName.replace(applicationName + ".", "");
+    private String stripApplicationName(String applicationName, String feature) {
+        return feature.replace(applicationName + ".", "");
     }
 }
