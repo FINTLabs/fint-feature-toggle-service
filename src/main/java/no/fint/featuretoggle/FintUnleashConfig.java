@@ -12,7 +12,7 @@ public class FintUnleashConfig {
     @Value("${spring.application.name}")
     private String applicationName;
 
-    @Value("${fint.unleash.api:https://unleashed-beta.fintlabs.no/api/}")
+    @Value("${fint.unleash.api:https://unleash-beta.fintlabs.no/api/}")
     private String unleashApi;
 
     @Value("${fint.unleash.instance-id:backend}")
