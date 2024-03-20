@@ -1,4 +1,4 @@
-package no.fint.featuretoggle
+package no.fint.featuretoggle.featuretoggle
 
 import io.getunleash.MoreOperations
 import io.getunleash.Unleash
@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
 class FeatureToggleControllerTest {
-
     private lateinit var unleashClient: Unleash
     private lateinit var unleashMore: MoreOperations
     private lateinit var featureToggleController: FeatureToggleController
