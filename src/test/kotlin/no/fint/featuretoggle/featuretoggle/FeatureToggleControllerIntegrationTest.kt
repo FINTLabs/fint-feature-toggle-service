@@ -9,11 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ActiveProfiles
 
-@SpringBootTest(classes = [TestApplication::class, FeatureToggleController::class], webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(
+    classes = [TestApplication::class, FeatureToggleController::class],
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+)
 @ActiveProfiles("test")
 class FeatureToggleControllerIntegrationTest {
     @Autowired
     private lateinit var unleashClient: Unleash
+
     @Autowired
     private lateinit var featureToggleController: FeatureToggleController
 
@@ -69,8 +73,9 @@ class FeatureToggleControllerIntegrationTest {
         val fakeUnleash = unleashClient as FakeUnleash
         fakeUnleash.enable("fint-feature-toggle-test.feature1")
         fakeUnleash.disable(
-                "otherApp.feature2",
-                "fint-feature-toggle-test.feature3")
+            "otherApp.feature2",
+            "fint-feature-toggle-test.feature3",
+        )
 
         // When
         val response = featureToggleController.feature()

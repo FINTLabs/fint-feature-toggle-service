@@ -10,20 +10,20 @@ import org.springframework.context.annotation.Configuration
 
 @ComponentScan(basePackageClasses = [UnleashProperties::class])
 @Configuration
-class FintUnleashConfig (
-        @Value("\${spring.application.name}")
-        private val applicationName: String,
-        private val unleashProperties: UnleashProperties
+class FintUnleashConfig(
+    @Value("\${spring.application.name}")
+    private val applicationName: String,
+    private val unleashProperties: UnleashProperties,
 ) {
     @Bean
     fun unleashConfig(): UnleashConfig {
         return UnleashConfig.builder()
-                .appName(applicationName)
-                .instanceId(unleashProperties.instanceId)
-                .unleashAPI(unleashProperties.api)
-                .apiKey(unleashProperties.apiKey)
-                .synchronousFetchOnInitialisation(true)
-                .build()
+            .appName(applicationName)
+            .instanceId(unleashProperties.instanceId)
+            .unleashAPI(unleashProperties.api)
+            .apiKey(unleashProperties.apiKey)
+            .synchronousFetchOnInitialisation(true)
+            .build()
     }
 
     @Bean

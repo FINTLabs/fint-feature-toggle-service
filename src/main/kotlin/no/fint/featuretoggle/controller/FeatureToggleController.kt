@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api")
 class FeatureToggleController(
-        @Value("\${spring.application.name}")
-        private val applicationName: String,
-        private val unleashClient: Unleash
+    @Value("\${spring.application.name}")
+    private val applicationName: String,
+    private val unleashClient: Unleash,
 ) {
     @RequestMapping("/feature")
     fun feature(): ResponseEntity<Map<String, Boolean>> {
-        val features = unleashClient.more().featureToggleNames
+        val features =
+            unleashClient.more().featureToggleNames
                 .filter { it.startsWith(applicationName) }
-                .associateBy ({ it.replace("${applicationName}.", "") }, { unleashClient.isEnabled(it) })
+                .associateBy({ it.replace("$applicationName.", "") }, { unleashClient.isEnabled(it) })
         return ResponseEntity.ok().body(features)
     }
 }
