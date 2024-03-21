@@ -7,6 +7,7 @@ plugins {
     `jvm-test-suite`
     `maven-publish`
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.plugin.spring)
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.ktlint)
@@ -29,7 +30,7 @@ dependencies {
     implementation(kotlin("reflect"))
 
     implementation(libs.spring.boot.web)
-    annotationProcessor(libs.spring.boot.configuration.processor)
+    kapt(libs.spring.boot.configuration.processor)
 
     implementation(libs.slf4j)
 
@@ -46,6 +47,7 @@ dependencies {
 }
 
 repositories {
+    gradlePluginPortal()
     mavenCentral()
 }
 
