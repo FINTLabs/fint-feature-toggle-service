@@ -1,10 +1,8 @@
-package no.fint.featuretoggle.config
+package no.fint.featuretoggle
 
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.stereotype.Component
 
-@Component
-@ConfigurationProperties("fint.unleash")
+@ConfigurationProperties("fint.feature-toggle.unleash")
 class UnleashProperties {
     lateinit var instanceId: String
     lateinit var api: String
