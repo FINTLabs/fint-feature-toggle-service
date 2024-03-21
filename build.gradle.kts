@@ -26,12 +26,12 @@ ktlint {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
-    implementation(kotlin("reflect"))
-
     implementation(libs.spring.boot.web)
     kapt(libs.spring.boot.configuration.processor)
 
+    implementation(libs.kotlin.reflect)
+
+//    SLF4J
     implementation(libs.slf4j)
 
 //    Jackson
