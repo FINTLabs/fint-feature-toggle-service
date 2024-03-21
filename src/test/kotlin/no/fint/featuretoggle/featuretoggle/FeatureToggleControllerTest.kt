@@ -4,7 +4,7 @@ import io.getunleash.MoreOperations
 import io.getunleash.Unleash
 import io.mockk.every
 import io.mockk.mockk
-import no.fint.featuretoggle.controller.FeatureToggleController
+import no.fint.featuretoggle.FeatureToggleController
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName

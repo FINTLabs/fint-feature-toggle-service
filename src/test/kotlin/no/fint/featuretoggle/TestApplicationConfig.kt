@@ -4,8 +4,9 @@ import io.getunleash.FakeUnleash
 import io.getunleash.Unleash
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
-@TestConfiguration
+@Configuration
 class TestApplicationConfig {
     @Bean
     fun unleashClient(): Unleash {
