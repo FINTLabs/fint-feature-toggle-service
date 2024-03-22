@@ -24,7 +24,6 @@ jobs:
           fetch-depth: 0
 
       - name: Release
-        run: echo $BRANCH_NAME
         uses: softprops/action-gh-release@v2
         with:
           prerelease: ${{ contains(github.ref, '-rc') }}
