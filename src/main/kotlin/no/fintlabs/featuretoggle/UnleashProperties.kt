@@ -1,4 +1,4 @@
-package no.fint.featuretoggle
+package no.fintlabs.featuretoggle
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 

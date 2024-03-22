@@ -1,4 +1,4 @@
-package no.fint.featuretoggle
+package no.fintlabs.featuretoggle
 
 import io.getunleash.FakeUnleash
 import io.getunleash.Unleash

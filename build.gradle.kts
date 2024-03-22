@@ -14,7 +14,7 @@ plugins {
     alias(libs.plugins.versions)
 }
 
-group = "no.fint"
+group = "no.fintlabs"
 version = System.getenv("RELEASE_VERSION") ?: "0-SNAPSHOT"
 
 java {

@@ -1,9 +1,9 @@
-package no.fint.featuretoggle.featuretoggle
+package no.fintlabs.featuretoggle.featuretoggle
 
 import io.getunleash.FakeUnleash
 import io.getunleash.Unleash
-import no.fint.featuretoggle.FeatureToggleController
-import no.fint.featuretoggle.TestApplication
+import no.fintlabs.featuretoggle.FeatureToggleController
+import no.fintlabs.featuretoggle.TestApplication
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest

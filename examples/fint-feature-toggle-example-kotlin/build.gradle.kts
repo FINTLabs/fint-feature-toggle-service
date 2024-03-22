@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.spring.boot)
 }
 
-group = "no.fint"
+group = "no.fintlabs"
 version = "0.0.1-SNAPSHOT"
 
 java {

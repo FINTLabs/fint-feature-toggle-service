@@ -1,4 +1,4 @@
-package no.fint.fintfeaturetoggleexample
+package no.fintlabs.fintfeaturetoggleexample
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

@@ -1,4 +1,4 @@
-package no.fint.fintfeaturetoggleexample
+package no.fintlabs.fintfeaturetoggleexample
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.GetMapping

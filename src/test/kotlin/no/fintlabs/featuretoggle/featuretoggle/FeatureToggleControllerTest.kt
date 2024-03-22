@@ -1,10 +1,10 @@
-package no.fint.featuretoggle.featuretoggle
+package no.fintlabs.featuretoggle.featuretoggle
 
 import io.getunleash.MoreOperations
 import io.getunleash.Unleash
 import io.mockk.every
 import io.mockk.mockk
-import no.fint.featuretoggle.FeatureToggleController
+import no.fintlabs.featuretoggle.FeatureToggleController
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
