@@ -30,7 +30,8 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Publish to Maven Central
-        run: ./gradlew build publish -Pversion=${{ env.VERSION }}
+        run: ./gradlew build publish
         env:
           REPOSILITE_USERNAME: ${{ secrets.REPOSILITE_USERNAME }}
           REPOSILITE_PASSWORD: ${{ secrets.REPOSILITE_PASSWORD }}
+          VERSION: ${{ env.VERSION }}

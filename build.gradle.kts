@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "no.fintlabs"
-version = System.getenv("RELEASE_VERSION") ?: "0-SNAPSHOT"
+version = System.getenv("VERSION") ?: "0-SNAPSHOT"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
