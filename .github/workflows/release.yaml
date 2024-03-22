@@ -1,8 +1,9 @@
 name: Release
 
 on:
-  push:
-    tags: [ "v*.*.*" ]
+  create:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -14,6 +15,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get branch name
+        id: get-branch-name
+        run: |
+          BRANCH_NAME=$(git branch --contains ${{ github.event.after }} | sed -n 2p | awk '{$1=$1};1')
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV    
+
       - name: Release
-        if: endsWith(github.ref, 'main')
+        if: env.BRANCH_NAME == 'main'
         uses: softprops/action-gh-release@v2
