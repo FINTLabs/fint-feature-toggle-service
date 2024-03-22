@@ -99,4 +99,4 @@ tasks.withType<Test> {
     }
 }
 
-apply(from = "https://raw.githubusercontent.com/FINTLabs/fint-buildscripts/master/reposilite.fint.ga.gradle")
+apply(from = "https://raw.githubusercontent.com/FINTLabs/fint-buildscripts/master/reposilite.ga.gradle")
