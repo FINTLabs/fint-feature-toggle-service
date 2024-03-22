@@ -22,7 +22,6 @@ class FeatureToggleAutoConfiguration(
         val unleashConfig =
             UnleashConfig.builder()
                 .appName(applicationName)
-                .instanceId(unleashProperties.instanceId)
                 .unleashAPI(unleashProperties.api)
                 .apiKey(unleashProperties.apiKey)
                 .synchronousFetchOnInitialisation(true)
@@ -31,6 +30,7 @@ class FeatureToggleAutoConfiguration(
     }
 
     @Bean
+    @ConditionalOnMissingBean
     fun featureToggleController(unleashClient: Unleash): FeatureToggleController {
         return FeatureToggleController(applicationName, unleashClient)
     }

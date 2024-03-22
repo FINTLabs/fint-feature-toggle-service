@@ -1,10 +1,11 @@
 package no.fintlabs.featuretoggle
 
 import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.boot.context.properties.ConstructorBinding
 
 @ConfigurationProperties("fint.feature-toggle.unleash")
-class UnleashProperties {
-    lateinit var instanceId: String
-    lateinit var api: String
-    lateinit var apiKey: String
-}
+@ConstructorBinding
+data class UnleashProperties(
+    val api: String,
+    val apiKey: String,
+)

@@ -27,7 +27,7 @@ dependencies {
 
     implementation(libs.unleash)
 
-    implementation("no.fint:fint-feature-toggle-service:0-SNAPSHOT")
+    implementation("no.fintlabs:fint-feature-toggle-service:0-SNAPSHOT")
 }
 
 
