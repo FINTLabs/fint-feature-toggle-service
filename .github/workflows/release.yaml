@@ -22,7 +22,7 @@ jobs:
       - name: Get branch name
         id: get-branch-name
         run: |
-          BRANCH_NAME=$(git branch --contains ${{ github.event.after }} | sed -n 2p | awk '{$1=$1};1')
+          BRANCH_NAME=$(git branch --contains ${{ github.event.after }} | sed -n 1p | awk '{print $2}')
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV    
 
       - name: Release
