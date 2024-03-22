@@ -2,7 +2,6 @@ name: Release
 
 on:
   push:
-    branches: [ main ]
     tags: [ "v*.*.*" ]
 
 concurrency:
@@ -16,4 +15,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Release
+        if: endsWith(github.ref, 'main')
         uses: softprops/action-gh-release@v2
