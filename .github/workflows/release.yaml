@@ -10,9 +10,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,3 +32,5 @@ jobs:
       - name: Release
         if: env.BRANCH_NAME == 'main'
         uses: softprops/action-gh-release@v2
+        with:
+          prerelease: ${{ contains(env.BRANCH_NAME, '-rc') }}
