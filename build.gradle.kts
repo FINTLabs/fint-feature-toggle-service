@@ -113,7 +113,6 @@ testing {
                 implementation(sourceSets.test.get().output)
             }
 
-
             targets {
                 all {
                     testTask.configure {
