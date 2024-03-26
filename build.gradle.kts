@@ -31,9 +31,6 @@ dependencies {
 
     implementation(libs.kotlin.reflect)
 
-//    SLF4J
-    implementation(libs.slf4j)
-
 //    Jackson
     implementation(libs.jackson.module.kotlin)
 
