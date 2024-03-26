@@ -63,14 +63,24 @@ tasks.withType<KotlinCompile> {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 testing {
     suites {
         val test by getting(JvmTestSuite::class) {
-            useJUnitJupiter()
+            testType.set(TestSuiteType.UNIT_TEST)
 
             targets {
                 all {
                     testTask.configure {
+                        useJUnitPlatform {
+                            excludeTags("integration")
+                        }
+                        filter {
+                            isFailOnNoMatchingTests = false
+                        }
                         testLogging {
                             events = setOf(TestLogEvent.SKIPPED, TestLogEvent.FAILED)
                             exceptionFormat = TestExceptionFormat.FULL
@@ -82,18 +92,60 @@ testing {
                 }
             }
         }
+
+        val integrationTest by registering(JvmTestSuite::class) {
+            testType.set(TestSuiteType.INTEGRATION_TEST)
+
+            sources {
+                kotlin {
+                    setSrcDirs(files("src/test/kotlin"))
+                }
+                resources {
+                    setSrcDirs(listOf("src/test/resources"))
+                }
+            }
+
+            dependencies {
+                // We can replace direct dependency on test's runtimeClasspath with implementation(project())
+                // once https://github.com/gradle/gradle/issues/25269 is resolved
+
+                implementation(sourceSets.test.get().runtimeClasspath)
+                implementation(sourceSets.test.get().output)
+            }
+
+
+            targets {
+                all {
+                    testTask.configure {
+                        useJUnitPlatform {
+                            includeTags("integration")
+                        }
+                        filter {
+                            isFailOnNoMatchingTests = false
+                        }
+                        testLogging {
+                            events = setOf(TestLogEvent.SKIPPED, TestLogEvent.FAILED)
+                            exceptionFormat = TestExceptionFormat.FULL
+                            showCauses = true
+                            showExceptions = true
+                            showStackTraces = true
+                        }
+                        shouldRunAfter(test)
+                    }
+                }
+            }
+        }
+
+        configureEach {
+            if (this is JvmTestSuite) {
+                useJUnitJupiter()
+            }
+        }
     }
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
-    testLogging {
-        events = setOf(TestLogEvent.SKIPPED, TestLogEvent.FAILED)
-        exceptionFormat = TestExceptionFormat.FULL
-        showCauses = true
-        showExceptions = true
-        showStackTraces = true
-    }
+tasks.named("check") {
+    dependsOn(testing.suites.named("integrationTest"))
 }
 
 apply(from = "https://raw.githubusercontent.com/FINTLabs/fint-buildscripts/master/reposilite.ga.gradle")

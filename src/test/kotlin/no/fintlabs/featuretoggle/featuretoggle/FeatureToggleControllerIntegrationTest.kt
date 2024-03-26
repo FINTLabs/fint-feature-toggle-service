@@ -4,6 +4,7 @@ import io.getunleash.FakeUnleash
 import io.getunleash.Unleash
 import no.fintlabs.featuretoggle.FeatureToggleController
 import no.fintlabs.featuretoggle.TestApplication
+import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -13,6 +14,7 @@ import org.springframework.test.context.ActiveProfiles
     classes = [TestApplication::class, FeatureToggleController::class],
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
 )
+@Tag("integration")
 @ActiveProfiles("test")
 class FeatureToggleControllerIntegrationTest {
     @Autowired
