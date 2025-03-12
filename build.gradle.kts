@@ -1,5 +1,6 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
@@ -28,13 +29,8 @@ ktlint {
 dependencies {
     implementation(libs.spring.boot.web)
     kapt(libs.spring.boot.configuration.processor)
-
     implementation(libs.kotlin.reflect)
-
-//    Jackson
     implementation(libs.jackson.module.kotlin)
-
-//    Unleash
     implementation(libs.unleash)
 
 //    Test
@@ -57,9 +53,9 @@ tasks.getByName<Jar>("jar") {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "17"
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_17
+        freeCompilerArgs.add("-Xjsr305=strict")
     }
 }
 
